@@ -1,21 +1,18 @@
-
+<div class="container-fluid">
 <div class="card card-success">
-    <div class="card-header">
-      <h3 class="card-title">
-        Quản lí nhân viên
-      </h3>
-      <div class='float-right'>
-        <form  action="/admin/add-personnel" method="GET"> 
-          <button  type="submit" class="btn btn-info btn-sm" data-toggle="modal" data-target="#add">
-            Thêm Thông Tin Nhân Viên
-          </button>
-        </form>
-        
-      </div>
+  <div class="card-header">
+    <h3 class="card-title">
+      Quản lí nhân viên
+    </h3>
+    <div class='float-right'>
+      <button id="btnAdd" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalAdd">
+        Thêm Thông Tin Nhân Viên
+      </button>
     </div>
-    
-    <div class="card-body">
-      <table id="example" class="table table-striped table-bordered">
+  </div>
+
+  <div class="card-body">
+    <table id="example" class="table table-striped table-bordered">
       <thead class="theadTable">
         <tr>
           <th style="width: 3%;">MaNhanVien</th>
@@ -50,20 +47,23 @@
               <%= per.Luong %> $
             </td>
             <td class="bt">
-              <form action="/admin/edit-user/<%= per.MaNhanVien %>" method="GET">
-                  <button type="submit" class="btn btn-primary">EDIT</button>
+              <form action="/admin/edit-personnel/<%= per.MaNhanVien %>" method="GET">
+                <button type="submit" class="btn btn-primary">EDIT</button>
               </form>
             </td>
             <td>
-              <form action="/admin/delete-user/<%= per.MaNhanVien %>" method="POST">
-                <button type="submit" class="btn btn-danger">DELETE</button>
+              <form action="/admin/personnel/<%= per.MaNhanVien %>" method="POST">
+                <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modalAdd">DELETE</button>
               </form>
             </td>
           </tr>
           <% }) %>
       </tbody>
     </table>
-    </div>
-    
-
+  </div>
 </div>
+</div>
+<%- include('./modalAdd.ejs'); %>
+
+
+

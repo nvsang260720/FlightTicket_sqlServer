@@ -9,11 +9,15 @@ router.get('/', PersonnelController.getHome)
 
 router.get('/login', AuthController.getLogin)
 
-router.get('/get-personnel', PersonnelController.getPersonnel)
+router.get('/personnel', PersonnelController.getPersonnel)
 
-router.get('/add-personnel',PersonnelController.getAddPersonnel)
+router.post('/personnel', PersonnelController.postAddPersonnel)
 
-router.delete('/personnel/:id',PersonnelController.deletePersonnel)
+router.post('/personnel/:id',PersonnelController.deletePersonnel)
+
+router.get('/edit-personnel/:id',PersonnelController.getEditPersonnel)
+
+router.post('/edit-personnel/',PersonnelController.postEditPersonnel)
 
 
 router.get('/get-category', CategoryController.getCategory);
