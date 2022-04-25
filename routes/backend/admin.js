@@ -4,8 +4,8 @@ const ProductController = require('../../controller/Backend/ProductsController')
 const CategoryController = require('../../controller/Backend/CategoryController')
 const AuthController = require('../../controller/Backend/AuthController')
 const PersonnelController = require('../../controller/Backend/PersonnelControler')
+const CustomerController = require('../../controller/Backend/CustomerController')
 
-router.get('/', PersonnelController.getHome)
 
 router.get('/login', AuthController.getLogin)
 
@@ -19,6 +19,16 @@ router.get('/edit-personnel/:id',PersonnelController.getEditPersonnel)
 
 router.post('/edit-personnel/',PersonnelController.postEditPersonnel)
 
+// customer
+
+router.get('/customer', CustomerController.getCustomer)
+
+router.post('/customer/:id',CustomerController.deleteCustomer)
+
+router.get('/edit-customer/:id', CustomerController.getEditCustomer)
+
+router.post('/edit-customer/', CustomerController.postEditCustomer)
+//
 
 router.get('/get-category', CategoryController.getCategory);
 

@@ -1,4 +1,4 @@
-const User = require('../../models/User')
+
 const {conn, sql} = require('../../database/connectDB')
 
 const getHome = async(req, res) => {
@@ -79,7 +79,7 @@ const getEditPersonnel = async (req, res)=> {
 const postEditPersonnel = async ( req, res) => {
 	const {maso, machinhanh, name, diachi, moblie, price} = req.body
 	var pool = await conn;
-	var sqlString = "UPDATE NHANVIEN SET MaChiNhanh = @machinhanh, Ten = @name, DiaChi = @diachi, Luong = @price  WHERE MaNhanVien = @maso";
+	var sqlString = "UPDATE NHANVIEN SET MaChiNhanh = @machinhanh, Ten = @name, DiaChi = @diachi, SoDienThoai = @moblie , Luong = @price  WHERE MaNhanVien = @maso";
 	return await pool.request()
 	.input("maso", sql.NVarChar, maso)
 	.input("machinhanh", sql.NVarChar, machinhanh)

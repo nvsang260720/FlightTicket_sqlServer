@@ -1,0 +1,60 @@
+<div>
+    <div class="container-fluid">
+        <h2>Thêm nhân viên</h2>
+    </div>
+    <section>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-outline card-info">
+                    <form action="/admin/edit-customer" method="POST">
+                        <div class="card-body">
+                            <% personnel.forEach( per=> { %>
+                                <div class="form-group">
+                                    <div class="inputChoose">
+                                        <label for="exampleInputName">Mã Khách Hàng</label>
+                                        <input value="<%= per.MaKhachHang %>" readonly type="text" name="makhachang"
+                                            class="form-control" id="exampleInputPassword1"
+                                            placeholder="432424d">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="inputChoose">
+                                        <label>Họ Tên</label>
+                                        <input value="<%= per.Ten %>" type="text" name="name" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Nguyen van a">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="inputChoose">
+                                        <label>Địa Chỉ</label>
+                                        <input value="<%= per.DiaChi %>" type="text" name="diachi" class="form-control"
+                                            placeholder="05 Nguyen van a">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="inputChoose">
+                                        <label>Số Điện Thoại</label>
+                                        <input value="<%= per.SoDienThoai %>" type="number" name="moblie"
+                                            class="form-control" id="exampleInputPassword1" placeholder="price">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="inputChoose">
+                                        <label>CMND</label>
+                                        <input value="<%= per.CMND %>" type="number" name="cmnd" class="form-control"
+                                            id="exampleInputPassword1" placeholder="price">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btSave">Update</button>
+                                </div>
+                        </div>
+
+                        <% }) %>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
