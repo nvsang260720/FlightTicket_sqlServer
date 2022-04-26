@@ -20,10 +20,9 @@ const ApiUser = require('./routes/api/User');
 const ApiProduct = require('./routes/api/Product')
 const ApiCategory = require('./routes/api/Category')
 
-const {conn,sql} = require('./database/connectDB')
-
-
 const app = express();
+
+app.locals.serverName = process.env.SERVER_NAME;
 
 app.use(expressLayouts)
 app.set('views', path.join(__dirname, 'views'));

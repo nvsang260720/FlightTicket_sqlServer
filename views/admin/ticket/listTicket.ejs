@@ -2,11 +2,12 @@
     <div class="card card-success">
         <div class="card-header">
             <h3 class="card-title">
-                Quản lí khách hàng
+                Quản lí vé máy bay
             </h3>
             <div class='float-right'>
-                <button id="btnAddCustomer" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalAdd">
-                    Thêm Thông Tin khách hàng
+                <button id="btnAdd" type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#modalAdd">
+                    Thêm vé
                 </button>
             </div>
         </div>
@@ -15,11 +16,11 @@
             <table id="example" class="table table-striped table-bordered">
                 <thead class="theadTable">
                     <tr>
-                        <th style="width: 3%;">MaKhachHang</th>
-                        <th style="width: 3%;">Ten</th>
-                        <th style="width: 18%;">DiaChi</th>
-                        <th style="width: 10%;">SoDienThoai</th>
-                        <th style="width: 10%;">CMND</th>
+                        <th style="width: 3%;">MaVe</th>
+                        <th style="width: 3%;">MaChiNhanh</th>
+                        <th style="width: 18%;">MaKhachHang</th>
+                        <th style="width: 10%;">MaChuyenBay</th>
+                        <th style="width: 10%;">GiaVe</th>
                         <th style="width: 3%;">EDIT</th>
                         <th style="width: 3%;">DELETE</th>
                     </tr>
@@ -28,19 +29,19 @@
                     <% customer.forEach( cus=> { %>
                         <tr>
                             <td class="centerTD">
+                                <%= cus.MaVe %>
+                            </td>
+                            <td>
+                                <%= cus.MaChiNhanh %>
+                            </td>
+                            <td class="centerTD">
                                 <%= cus.MaKhachHang %>
                             </td>
                             <td>
-                                <%= cus.Ten %>
-                            </td>
-                            <td class="centerTD">
-                                <%= cus.DiaChi %>
+                                <%= cus.MaChuyenBay %>
                             </td>
                             <td>
-                                <%= cus.SoDienThoai %>
-                            </td>
-                            <td>
-                                <%= cus.CMND %>
+                                <%= cus.GiaVe %>
                             </td>
                             <td class="bt">
                                 <form action="/admin/edit-customer/<%= cus.MaKhachHang %>" method="GET">

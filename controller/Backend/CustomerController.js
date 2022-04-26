@@ -1,8 +1,8 @@
-const {conn, sql} = require('../../database/connectDB')
+const {connectDB, sql} = require('../../database/connectDB')
 const getCustomer = async(req, res) => {
 	
     try {
-        var pool = await conn;
+        let pool = await connectDB(req.app.locals.serverName)
 		var sqlString = " SELECT * FROM KHACHHANG";
 		await pool.request().query(sqlString, async(err, data) => {
 			const customer = data.recordset;
@@ -19,7 +19,7 @@ const getCustomer = async(req, res) => {
 const getEditCustomer = async(req, res)=> {
 	const personnelId = req.params.id 
 	console.log(personnelId)
-	var pool = await conn;
+	let pool = await connectDB(req.app.locals.serverName)
 	var sqlString = "SELECT MaKhachHang,Ten,DiaChi,SoDienThoai,CMND  FROM KHACHHANG WHERE MaKhachHang = @personnelId";
 	return await pool.request()
 	.input("personnelId", sql.NVarChar, personnelId )
@@ -30,7 +30,7 @@ const getEditCustomer = async(req, res)=> {
 }
 const postEditCustomer = async ( req, res) => {
 	const {makhachang, name, diachi, moblie, cmnd} = req.body
-	var pool = await conn;
+	let pool = await connectDB(req.app.locals.serverName)
 	var sqlString = "UPDATE KHACHHANG SET  Ten = @name, DiaChi = @diachi, SoDienThoai = @moblie, CMND = @cmnd  WHERE MaKhachHang = @makhachang";
 	return await pool.request()
 	.input("makhachang", sql.NVarChar, makhachang)
@@ -47,7 +47,7 @@ const deleteCustomer = async(req, res) => {
 	const personnelId = req.params.id 
 	console.log(personnelId)
 
-	var pool = await conn;
+	let pool = await connectDB(req.app.locals.serverName)
 	var sqlString = "DELETE FROM KHACHHANG WHERE MaKhachHang = @personnelId" ;
 	return pool.request()
 	.input('personnelId', sql.NVarChar, personnelId)
@@ -56,10 +56,41 @@ const deleteCustomer = async(req, res) => {
 	})
 }
 
-
+const getTicket = async(req, res) => {
+	try {
+        let pool = await connectDB(req.app.locals.serverName)
+		var sqlString = " SELECT * FROM VEBAN";
+		await pool.request().query(sqlString, async(err, data) => {
+			const customer = data.recordset;
+			console.log(err, customer)
+			return res.render('admin/ticket/listTicket', { customer: customer});
+		
+		})
+        
+    } catch (error) {
+        res.json({ message: 'get ser fail' })
+    }
+}
+const getFlight = async(req, res) => {
+	try {
+        let pool = await connectDB(req.app.locals.serverName)
+		var sqlString = " SELECT * FROM CHUYENBAY";
+		await pool.request().query(sqlString, async(err, data) => {
+			const customer = data.recordset;
+			console.log(err, customer)
+			return res.render('admin/flight/listFlight', { customer: customer});
+		
+		})
+        
+    } catch (error) {
+        res.json({ message: 'get ser fail' })
+    }
+}
 module.exports = {
  getCustomer,
  getEditCustomer,
  postEditCustomer,
- deleteCustomer
+ deleteCustomer,
+ getTicket,
+ getFlight
 }

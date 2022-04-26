@@ -7,7 +7,9 @@ const PersonnelController = require('../../controller/Backend/PersonnelControler
 const CustomerController = require('../../controller/Backend/CustomerController')
 
 
-router.get('/login', AuthController.getLogin)
+router.get('/', PersonnelController.getHome)
+
+router.post('/', PersonnelController.getDB) 
 
 router.get('/personnel', PersonnelController.getPersonnel)
 
@@ -28,7 +30,11 @@ router.post('/customer/:id',CustomerController.deleteCustomer)
 router.get('/edit-customer/:id', CustomerController.getEditCustomer)
 
 router.post('/edit-customer/', CustomerController.postEditCustomer)
-//
+
+//plane ticket
+router.get('/get-ticket', CustomerController.getTicket);
+
+router.get('/get-flight', CustomerController.getFlight);
 
 router.get('/get-category', CategoryController.getCategory);
 
